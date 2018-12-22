@@ -1,0 +1,111 @@
+#include<iostream>
+#include<string.h>
+#include<stdlib.h>
+using namespace std;
+static int length =10;
+class array
+{
+
+    char str[20]= {'r','a','f','j','t','h','s','j','a','k'};
+public:
+void insrt()
+    {
+        int pos;
+        char ch;
+        cout<<"enter position at which u want to insert a character"<<endl;
+        cin>>pos;
+        cout<<"enter the value u want to insert"<<endl;
+        cin>>ch;
+        for(int i=20; i>pos-1; i--)
+
+        {
+            str[i]=str[i-1];
+
+        }
+        str[pos-1]=ch;
+        length++;
+    }
+
+    void output()
+    {
+        for(int i=0; i<length; i++)
+            cout<<str[i]<<"  ";
+
+    }
+    void srch()
+    {
+        char ch;
+        cout<<"\nenter the character you want to search"<<endl;
+        cin>>ch;
+        int count;
+        for(int i=0; i<length; i++)
+        {
+            if(str[i]==ch){cout<<"character found at index :"<< i<<endl;count++;}
+         }
+         if(count==0)
+         cout<<"not found"<<endl;
+
+    }
+
+    void del()
+    {
+        int n;
+        cout<<"enter the position of character u want to delete";
+        cin>>n;
+        for (int i=n-1; i<length; i++)
+        {
+            str[i]=str[i+1];
+
+        }
+    }
+    void srt()
+    {char temp;
+        for(int i=0; i<length; i++)
+        {
+            for(int j=0; j<length-1; j++)
+            {
+                if(str[j]>str[j+1])
+                {
+
+                    temp=str[j];
+                    str[j]=str[j+1];
+                    str[j+1]=temp;
+                }
+            }
+        }
+    }
+};
+int main()
+{
+    array A;
+    A.output();
+    int choice;
+    while(1)
+    {
+        cout<<"\n(a)Enter 1 to insert new element\n(b)Enter 2 to sort the array\n(c)Enter 3 to search an element\n(d)Enter 4 to delete any element\n(e)Enter 0 to exit\n";
+        cin>>choice;
+        switch(choice)
+        {
+        case 1:{            A.insrt();
+            A.output();
+            break;}
+        case 2:
+            cout<<"After sorting:=";
+            A.srt();
+            A.output();
+            break;
+        case 3 :
+            A.srch();
+            break;
+        case 4:
+            A.del();
+            A.output();
+            break;
+        case 0:
+            exit(0);
+        }
+    }
+
+    return 0;
+}
+
